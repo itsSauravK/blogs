@@ -1,0 +1,26 @@
+i.icon{
+	font-size:1.5em;
+}
+.container.main{
+margin-top:7em;
+}
+h2:first-child {
+    margin-top: 3em;
+}
+.ui.header .icon:only-child {
+	font-size:0.75em;
+	float:right;
+}
+.edit{
+	color:black;
+}
+.trash.icon{
+	
+	font-size:1.25em;
+}
+.author{
+	color:rgb(101,101,101);
+}
+.content{
+	font-weight:700;
+}

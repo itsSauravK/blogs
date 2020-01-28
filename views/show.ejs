@@ -1,0 +1,78 @@
+<%- include('partials/header')%>
+<div class="ui main text container segment">
+	<div class="ui huge header">
+		<%=blog.title%>
+		<a class="edit" href="/blogs/<%=blog._id%>/edit"><i class="edit icon"></i></a>
+	</div>
+	
+	<div class="ui top attached ">
+		<div class="item">
+			<img class="ui centered rounded image" src="<%=blog.image%>" >
+		</div>
+		<div class="content">
+			<span><%=blog.created.toDateString()%></span>
+		</div>
+		<div class="description">
+			<p>
+				<%-blog.body%>
+			</p>
+			
+		</div>
+		<form action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+			<br>
+			<address class="author"><%=blog.author%></address>
+			
+			<button class="ui red basic button">
+				Delete
+				<i class="trash icon"></i>
+			</button>
+		</form>
+	</div>
+	
+			
+			
+
+	
+	<div class="ui comments">
+		<h3 class="ui dividing header">Comments</h3>
+		<% blog.comments.forEach(function(comment){%>
+  		<div class="comment">
+   				
+			
+			<div class="content">
+			  <a class="author"><%=comment.user%></a>
+			  <div class="metadata">
+				<div class="date">2 days ago</div>
+				
+					</div>
+					 <div class="text">
+						<%=comment.content%>
+					</div>
+   			 	</div>
+  			</div>
+		<% }); %>
+</div>
+<hr>
+
+<div class="ui huge header">
+		New Comment
+	</div>
+
+
+
+	<form class="ui form" action="/blogs/<%=blog._id%>/comment" method="POST">
+		<div class="field" >
+			<label>User</label>
+			<input type="text" name="comment[user]" placeholder="User" required>
+		</div>
+		<div class="field" >
+			<label>Comment</label>
+			<input type="text" name="comment[content]" placeholder="Comment" required  autocomplete="off">
+		</div>
+		
+		<input class="ui violet button" type="submit">
+		
+	</form>	
+
+</div>
+<%- include('partials/footer')%>
